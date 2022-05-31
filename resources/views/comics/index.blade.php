@@ -3,6 +3,7 @@
 @section('content')
 
     <h1 class="text-primary text-center">DC COMICS</h1>
+    <a href="{{ route( 'comics.create' ) }}" class="btn btn-success">Crea Fumetto</a>
 
     <table class="table">
   <thead>
