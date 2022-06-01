@@ -3,6 +3,15 @@
 @section('content')
 
     <h1 class="text-primary text-center">DC COMICS</h1>
+
+    {{-- pop up --}}
+
+    @if ( session('message'))
+      <div class="alert alert-success">
+         {{ session('message') }}
+      </div>        
+    @endif
+
     <a href="{{ route( 'comics.create' ) }}" class="btn btn-success">Crea Fumetto</a>
 
     <table class="table">
@@ -35,6 +44,11 @@
       <td class="">
           <a href="{{ route( 'comics.show', $comic->id ) }}" class="btn btn-primary">view</a>
           <a href="{{ route( 'comics.edit', $comic->id ) }}" class="btn btn-warning">modifica</a>
+          <form action="{{ route( 'comics.destroy', $comic->id )  }}" method="POST">
+            @method('DELETE')
+            @csrf
+            <button class="btn btn-danger" type="submit">Elimina</button>
+          </form>
       </td>
     </tr>
     @empty
